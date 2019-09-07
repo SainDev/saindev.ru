@@ -3,6 +3,9 @@
 
 # Dependency directories
 /node_modules
+.env
 
 # lerna files
 /lerna-debug.log
+
+.firebase/

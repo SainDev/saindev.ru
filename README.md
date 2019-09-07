@@ -1,1 +1,1 @@
-# saindev.ru
+# saindev.ru &middot; [![GH Actions](https://github.com/SainDev/saindev.ru/workflows/Build%20and%20Deploy%20Admin/badge.svg)](https://github.com/SainDev/saindev.ru/actions)
