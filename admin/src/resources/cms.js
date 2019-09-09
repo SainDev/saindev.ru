@@ -15,7 +15,7 @@ import {
   EditButton,
 } from "react-admin";
 
-export const TechnologyList = (props) => (
+export const CmsList = (props) => (
   <List {...props}>
     <Datagrid>
       <TextField source="name" />
@@ -25,7 +25,7 @@ export const TechnologyList = (props) => (
   </List>
 );
 
-export const TechnologyShow = (props) => (
+export const CmsShow = (props) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
@@ -34,7 +34,7 @@ export const TechnologyShow = (props) => (
   </Show>
 );
 
-export const TechnologyCreate = (props) => (
+export const CmsCreate = (props) => (
   <Create {...props} >
     <SimpleForm>
       <TextInput source="id" />
@@ -43,7 +43,7 @@ export const TechnologyCreate = (props) => (
   </Create>
 );
 
-export const TechnologyEdit = (props) => (
+export const CmsEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <DisabledInput source="id" />

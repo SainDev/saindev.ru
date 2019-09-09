@@ -41,7 +41,7 @@ export const WorkList = props => (
             <TextField source="slug" />
             <UrlField source="site_url" label="Сайт" />
             <UrlField source="repo_url" label="Репозиторий" />
-            <ReferenceArrayField label="Технологии" reference="technologies" source="technologies">
+            <ReferenceArrayField label="CMS" reference="cms" source="cmsId">
                 <SingleFieldList linkType={false}>
                     <ChipField source="name" />
                 </SingleFieldList>
@@ -66,7 +66,7 @@ export const WorkShow = props => (
             <UrlField source="repo_url" label="Репозиторий" />
             <DateField source="startDate" label="Дата начала" options={{ year: 'numeric', month: 'long' }} />
             <RichTextField source="body" />
-            <ReferenceArrayField label="Технологии" reference="technologies" source="technologies">
+            <ReferenceArrayField label="CMS" reference="cms" source="cmsId">
                 <SingleFieldList linkType={false}>
                     <ChipField source="name" />
                 </SingleFieldList>
@@ -85,6 +85,11 @@ export const WorkCreate = props => (
             <TextInput source="repo_url" label="Репозиторий" />
             <DateInput source="startDate" label="Дата начала" options={{ format: 'MM.yyyy' }} />
             <RichTextInput source="body" />
+            <ReferenceArrayInput label="CMS" reference="cms" source="cmsId">
+                <SelectArrayInput>
+                    <ChipField source="name" />
+                </SelectArrayInput>
+            </ReferenceArrayInput>
             <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple placeholder={<p>Drop your files here</p>}>
                 <ImageField source="src" title="title" />
             </ImageInput>
@@ -104,7 +109,7 @@ export const WorkEdit = props => (
             <TextInput source="repo_url" label="Репозиторий" />
             <DateInput source="startDate" label="Start date" options={{ format: 'MM.yyyy' }} />
             <RichTextInput source="body" />
-            <ReferenceArrayInput label="Технологии" reference="technologies" source="technologies">
+            <ReferenceArrayInput label="CMS" reference="cms" source="cmsId">
                 <SelectArrayInput>
                     <ChipField source="name" />
                 </SelectArrayInput>
