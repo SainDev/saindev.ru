@@ -81,6 +81,8 @@ export const WorkCreate = props => (
         <SimpleForm>
             <TextInput source="title" label="Название проекта" />
             <TextInput source="slug" />
+            <TextInput source="site_url" label="Сайт" />
+            <TextInput source="repo_url" label="Репозиторий" />
             <DateInput source="startDate" label="Дата начала" options={{ format: 'MM.yyyy' }} />
             <RichTextInput source="body" />
             <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple placeholder={<p>Drop your files here</p>}>
@@ -98,9 +100,11 @@ export const WorkEdit = props => (
             <DisabledInput source="lastupdate" />
             <TextInput source="title" label="Название проекта" />
             <TextInput source="slug" />
+            <TextInput source="site_url" label="Сайт" />
+            <TextInput source="repo_url" label="Репозиторий" />
             <DateInput source="startDate" label="Start date" options={{ format: 'MM.yyyy' }} />
             <RichTextInput source="body" />
-            <ReferenceArrayInput label="Technologies" reference="technologies" source="technologies">
+            <ReferenceArrayInput label="Технологии" reference="technologies" source="technologies">
                 <SelectArrayInput>
                     <ChipField source="name" />
                 </SelectArrayInput>
