@@ -35,7 +35,7 @@ const WorkFilter = props => (
 );
 
 export const WorkList = props => (
-    <List {...props} filters={<WorkFilter />} sort={{ field: 'createdate', order: 'DESC' }}>
+    <List {...props} filters={<WorkFilter />} sort={{ field: 'startDate', order: 'DESC' }}>
         <Datagrid>
             <TextField source="title" label="Название проекта" />
             <TextField source="slug" />
