@@ -1,28 +1,25 @@
-import * as React from 'react';
+import React from 'react';
 import { Admin, Resource } from 'react-admin';
 
-import { WorkList, WorkShow, WorkCreate, WorkEdit } from "./works";
 import {
-  FirebaseAuthProvider,
-  FirebaseDataProvider,
-} from 'react-admin-firebase';
+    FirebaseAuthProvider,
+    FirebaseDataProvider,
+  } from 'react-admin-firebase';
+import { WorkList, WorkShow, WorkCreate, WorkEdit } from "./works";
+import { TechnologyList, TechnologyShow, TechnologyCreate, TechnologyEdit } from "./technologies";
+import { Dashboard } from './dashboard';
 
 import { firebaseConfig } from './config/firebase';
-const options = {
-    //logging: true,
-    //rootRef: 'rootrefcollection/works',
-    //app: firebaseAppInstance,
-    //watch: ['works']
-    // dontwatch: ['comments']
-}
+const options = {};
 
 const dataProvider = FirebaseDataProvider(firebaseConfig, options);
 const authProvider = FirebaseAuthProvider(firebaseConfig, options);
 
 function App() {
     return (
-        <Admin dataProvider={dataProvider} authProvider={authProvider}>
+        <Admin dataProvider={dataProvider} authProvider={authProvider} dashboard={Dashboard}>
             <Resource name="works" list={WorkList} show={WorkShow} create={WorkCreate} edit={WorkEdit} />
+            <Resource name="technologies" list={TechnologyList} show={TechnologyShow} create={TechnologyCreate} edit={TechnologyEdit} />
         </Admin>
     );
 }

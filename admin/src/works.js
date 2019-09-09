@@ -1,124 +1,113 @@
-// in src/works.js
 import * as React from "react";
-// tslint:disable-next-line:no-var-requires
+
 import {
-  Datagrid,
-  List,
-  Show,
-  Create,
-  Edit,
-  Filter,
-  DisabledInput,
-  SimpleShowLayout,
-  SimpleForm,
-  TextField,
-  TextInput,
-  ShowButton,
-  EditButton,
-  DeleteButton,
-  RichTextField,
-  ReferenceField,
-  SelectInput,
-  ReferenceInput,
-  FileInput,
-  FileField,
-  ArrayInput,
-  SimpleFormIterator
+    Datagrid,
+    List,
+    Show,
+    Create,
+    Edit,
+    Filter,
+    DisabledInput,
+    SimpleShowLayout,
+    SimpleForm,
+    DateField,
+    TextField,
+    TextInput,
+    ShowButton,
+    EditButton,
+    UrlField,
+    RichTextField,
+    ReferenceArrayInput,
+    SelectArrayInput,
+    ReferenceArrayField,
+    SingleFieldList,
+    ChipField,
+    ImageInput,
+    ImageField
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
+import { DateInput } from "react-admin-date-inputs";
 
 const WorkFilter = props => (
-  <Filter {...props}>
-    <TextInput label="Search" source="title" alwaysOn />
-  </Filter>
+    <Filter {...props}>
+        <TextInput label="Поиск" source="title" alwaysOn />
+    </Filter>
 );
 
 export const WorkList = props => (
-  <List {...props} filters={<WorkFilter />}>
-    <Datagrid>
-      <TextField source="title" />
-      <TextField source="updatedby" />
-      <TextField source="createdby" />
-      <RichTextField source="body" />
-      {/* <ReferenceField label="User" source="user_id" reference="users">
-        <TextField source="name" />
-      </ReferenceField> */}
-      <ShowButton label="" />
-      <EditButton label="" />
-      <DeleteButton label="" redirect={false} />
-    </Datagrid>
-  </List>
+    <List {...props} filters={<WorkFilter />} sort={{ field: 'createdate', order: 'DESC' }}>
+        <Datagrid>
+            <TextField source="title" label="Название проекта" />
+            <TextField source="slug" />
+            <UrlField source="site_url" label="Сайт" />
+            <UrlField source="repo_url" label="Репозиторий" />
+            <ReferenceArrayField label="Технологии" reference="technologies" source="technologies">
+                <SingleFieldList linkType={false}>
+                    <ChipField source="name" />
+                </SingleFieldList>
+            </ReferenceArrayField>
+            <DateField source="startDate" label="Дата начала" options={{ year: 'numeric', month: 'long' }} />
+            <DateField source="createdate" label="Добавлено" showTime />
+            <ShowButton label="" />
+            <EditButton label="" />
+        </Datagrid>
+    </List>
 );
 
 export const WorkShow = props => (
-  <Show {...props}>
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="createdate" />
-      <TextField source="lastupdate" />
-      <TextField source="title" />
-      <RichTextField source="body" />
-      {/* <ReferenceField label="User" source="user_id" reference="users">
-        <TextField source="name" />
-      </ReferenceField> */}
-      <FileField source="files_multiple.src" title="files_multiple.title" multiple />
-    </SimpleShowLayout>
-  </Show>
+    <Show {...props}>
+        <SimpleShowLayout>
+            <TextField source="id" />
+            <DateField source="createdate" showTime />
+            <DateField source="lastupdate" showTime />
+            <TextField source="title" label="Название проекта" />
+            <TextField source="slug" />
+            <UrlField source="site_url" label="Сайт" />
+            <UrlField source="repo_url" label="Репозиторий" />
+            <DateField source="startDate" label="Дата начала" options={{ year: 'numeric', month: 'long' }} />
+            <RichTextField source="body" />
+            <ReferenceArrayField label="Технологии" reference="technologies" source="technologies">
+                <SingleFieldList linkType={false}>
+                    <ChipField source="name" />
+                </SingleFieldList>
+            </ReferenceArrayField>
+            <ImageField source="pictures" src="src" title="title" />
+        </SimpleShowLayout>
+    </Show>
 );
 
 export const WorkCreate = props => (
-  <Create {...props}>
-    <SimpleForm>
-      <TextInput source="title" />
-      <RichTextInput source="body" />
-      {/* <ReferenceInput
-        label="User"
-        source="user_id"
-        reference="users"
-        // filter={{ isAdmin: true }}
-      >
-        <SelectInput label="User" optionText="name" />
-      </ReferenceInput> */}
-      <FileInput source="files_multiple" multiple label="Files with (multiple)">
-        <FileField source="src" title="title" />
-      </FileInput>
-      <ArrayInput source="files">
-        <SimpleFormIterator>
-          <FileInput source="file" label="Array Form Files">
-            <FileField source="src" title="title" />
-          </FileInput>
-        </SimpleFormIterator>
-      </ArrayInput>
-    </SimpleForm>
-  </Create>
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput source="title" label="Название проекта" />
+            <TextInput source="slug" />
+            <DateInput source="startDate" label="Дата начала" options={{ format: 'MM.yyyy' }} />
+            <RichTextInput source="body" />
+            <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple placeholder={<p>Drop your files here</p>}>
+                <ImageField source="src" title="title" />
+            </ImageInput>
+        </SimpleForm>
+    </Create>
 );
 
 export const WorkEdit = props => (
-  <Edit {...props}>
-    <SimpleForm>
-      <DisabledInput source="id" />
-      <DisabledInput source="createdate" />
-      <DisabledInput source="lastupdate" />
-      <TextInput source="title" />
-      <RichTextInput source="body" />
-      {/* <ReferenceInput
-        label="User"
-        source="user_id"
-        reference="users"
-        // filter={{ isAdmin: true }}
-      >
-        <SelectInput label="User" optionText="name" />
-      </ReferenceInput> */}
-      <FileInput source="files_multiple" multiple label="Files with (multiple)">
-        <FileField source="src" title="title" />
-      </FileInput>
-      <ArrayInput source="files">
-        <SimpleFormIterator>
-          <FileInput source="file" label="Array Form Files">
-            <FileField source="src" title="title" />
-          </FileInput>
-        </SimpleFormIterator>
-      </ArrayInput>
-    </SimpleForm>
-  </Edit>
+    <Edit {...props}>
+        <SimpleForm>
+            <DisabledInput source="id" />
+            <DisabledInput source="createdate" />
+            <DisabledInput source="lastupdate" />
+            <TextInput source="title" label="Название проекта" />
+            <TextInput source="slug" />
+            <DateInput source="startDate" label="Start date" options={{ format: 'MM.yyyy' }} />
+            <RichTextInput source="body" />
+            <ReferenceArrayInput label="Technologies" reference="technologies" source="technologies">
+                <SelectArrayInput>
+                    <ChipField source="name" />
+                </SelectArrayInput>
+            </ReferenceArrayInput>
+            <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple placeholder={<p>Drop your files here</p>}>
+                <ImageField source="src" title="title" />
+            </ImageInput>
+        </SimpleForm>
+    </Edit>
 );
