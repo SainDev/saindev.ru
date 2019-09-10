@@ -17,6 +17,8 @@ import {
     EditButton,
     UrlField,
     RichTextField,
+    BooleanField,
+    BooleanInput,
     ReferenceArrayInput,
     SelectArrayInput,
     ReferenceArrayField,
@@ -47,7 +49,7 @@ export const WorkList = props => (
                 </SingleFieldList>
             </ReferenceArrayField>
             <DateField source="startDate" label="Дата начала" options={{ year: 'numeric', month: 'long' }} />
-            <DateField source="createdate" label="Добавлено" showTime />
+            <BooleanField label="Портфолио" source="showInSite" />
             <ShowButton label="" />
             <EditButton label="" />
         </Datagrid>
@@ -71,6 +73,7 @@ export const WorkShow = props => (
                     <ChipField source="name" />
                 </SingleFieldList>
             </ReferenceArrayField>
+            <BooleanField label="Портфолио" source="showInSite" />
             <ImageField source="pictures" src="src" title="title" />
         </SimpleShowLayout>
     </Show>
@@ -90,6 +93,7 @@ export const WorkCreate = props => (
                     <ChipField source="name" />
                 </SelectArrayInput>
             </ReferenceArrayInput>
+            <BooleanInput label="Портфолио" source="showInSite" />
             <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple placeholder={<p>Drop your files here</p>}>
                 <ImageField source="src" title="title" />
             </ImageInput>
@@ -114,6 +118,7 @@ export const WorkEdit = props => (
                     <ChipField source="name" />
                 </SelectArrayInput>
             </ReferenceArrayInput>
+            <BooleanInput label="Портфолио" source="showInSite" />
             <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple placeholder={<p>Drop your files here</p>}>
                 <ImageField source="src" title="title" />
             </ImageInput>

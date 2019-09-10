@@ -1,7 +1,7 @@
 {
   "name": "saindev-ru",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel",
