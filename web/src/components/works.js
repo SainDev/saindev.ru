@@ -3,7 +3,7 @@ import { useFirebase } from "gatsby-plugin-firebase"
 
 const Works = () => {
     const [works, setWorks] = React.useState(() => {
-        const initialWorks = JSON.parse(localStorage.getItem('works'));
+        const initialWorks = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('works'));
         return initialWorks;
     })
 
@@ -18,9 +18,9 @@ const Works = () => {
                 data[doc.id] = doc.data();
             });
 
-            const cachedWorks = localStorage.getItem('works')
+            const cachedWorks = typeof window !== 'undefined' && localStorage.getItem('works');
             if (cachedWorks === null || cachedWorks !== JSON.stringify(data)) {
-                localStorage.setItem('works', JSON.stringify(data));
+                typeof window !== 'undefined' && localStorage.setItem('works', JSON.stringify(data));
                 setWorks(data);
             }
         });
