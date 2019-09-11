@@ -60,8 +60,6 @@ export const WorkShow = props => (
     <Show {...props}>
         <SimpleShowLayout>
             <TextField source="id" />
-            <DateField source="createdate" showTime />
-            <DateField source="lastupdate" showTime />
             <TextField source="title" label="Название проекта" />
             <TextField source="slug" />
             <UrlField source="site_url" label="Сайт" />
@@ -105,8 +103,6 @@ export const WorkEdit = props => (
     <Edit {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <DisabledInput source="createdate" />
-            <DisabledInput source="lastupdate" />
             <TextInput source="title" label="Название проекта" />
             <TextInput source="slug" />
             <TextInput source="site_url" label="Сайт" />
