@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { YMInitializer } from 'react-yandex-metrika';
 
 import Header from "./header"
 import "./layout.css"
@@ -36,9 +37,8 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          © {new Date().getFullYear()} SainDev
+          {process.env.NODE_ENV === 'production' ? <YMInitializer accounts={[55371715]} options={{webvisor: true}} version="2" /> : null}
         </footer>
       </div>
     </>
