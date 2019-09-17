@@ -12,10 +12,11 @@ const Works = () => {
         .firestore()
         .collection("works")
         .where('showInSite', '==', true)
+        .orderBy('startDate', 'desc')
         .onSnapshot({ includeMetadataChanges: true }, function(snapshot) {
-            let data = {};
+            let data = [];
             snapshot.forEach((doc) => {
-                data[doc.id] = doc.data();
+                data.push(doc.data());
             });
 
             const cachedWorks = typeof window !== 'undefined' && localStorage.getItem('works');
@@ -29,6 +30,11 @@ const Works = () => {
     return (
         works ? 
             'works'
+            /*Object.keys(works).map(id => (
+                <div>
+                    {works[id].title}
+                </div>
+            ))*/
         : 
             'Loading...'
     )
