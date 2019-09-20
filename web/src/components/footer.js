@@ -28,7 +28,7 @@ export default function Footer() {
     const classes = useStyles();
     return (
         <footer className={classes.footer}>
-            <Container fixed>
+            <Container maxWidth="lg">
                 <div className={classes.right}>
                     &copy; {1900 + new Date().getYear()}, SainDev
                 </div>

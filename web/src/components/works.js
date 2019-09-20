@@ -4,20 +4,30 @@ import { useFirebase } from "gatsby-plugin-firebase"
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     card: {
-        maxWidth: 345,
-        margin: "25px 0",
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
     },
-    media: {
-        height: 180,
-        backgroundPosition: 'top'
+    cardAction: {
+        height: '100%'
+    },
+    cardMedia: {
+        backgroundPosition: 'top',
+        paddingTop: '56.25%'
+    },
+    cardContent: {
+        flexGrow: 1,
+    },
+    cardGrid: {
+        paddingTop: theme.spacing(4),
     },
     section: {
-        padding: "70px 0",
-        textAlign: "center"
+        padding: theme.spacing(8, 3),
+        //textAlign: "center"
     },
-});
+}));
 
 const Works = () => {
     const classes = useStyles();
@@ -37,7 +47,6 @@ const Works = () => {
             snapshot.forEach((doc) => {
                 data.push(doc.data());
             });
-
             const cachedWorks = typeof window !== 'undefined' && localStorage.getItem('works');
             if (cachedWorks === null || cachedWorks !== JSON.stringify(data)) {
                 typeof window !== 'undefined' && localStorage.setItem('works', JSON.stringify(data));

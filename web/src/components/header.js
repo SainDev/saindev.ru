@@ -123,7 +123,7 @@ export default function Header(props) {
     const brandComponent = <Button className={classes.title}>{brand}</Button>;
     return (
         <AppBar className={appBarClasses}>
-            <Container fixed>
+            <Container maxWidth="lg">
                 <Toolbar>
                     {leftLinks !== undefined ? brandComponent : null}
                     <div className={classes.flex}>
