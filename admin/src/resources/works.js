@@ -29,6 +29,7 @@ import {
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 import { DateInput } from "react-admin-date-inputs";
+import AvatarField from '../components/AvatarField'
 
 const WorkFilter = props => (
     <Filter {...props}>
@@ -39,6 +40,7 @@ const WorkFilter = props => (
 export const WorkList = props => (
     <List {...props} filters={<WorkFilter />} sort={{ field: 'startDate', order: 'DESC' }}>
         <Datagrid>
+            <AvatarField source="pictures" label="Скриншот" />
             <TextField source="title" label="Название проекта" />
             <TextField source="slug" />
             <UrlField source="site_url" label="Сайт" />
