@@ -42,7 +42,15 @@ const Layout = ({ children }) => {
                 <Container maxWidth="lg">
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
-                            
+                            <div style={{color: "#FFFFFF", textAlign: "left"}}>
+                                <h1 style={{fontSize: "2.2rem", fontWeight: "600", display: "inline-block", position: "relative"}}>
+                                    Hello, I'm <span class="highlight">SainDev</span>
+                                </h1>
+                                <h3 style={{fontSize: "1.313rem", margin: "0 0"}}>
+                                    I'm a full-stack web developer.<br />
+                                    <small style={{fontSize: "0.8rem"}}>This site is under construction.</small>
+                                </h3>
+                            </div>
                         </Grid>
                     </Grid>
                 </Container>

@@ -59,8 +59,35 @@ const Works = () => {
         works ?
             <div className={classes.section}>
                 <h2>Проекты</h2>
-                <div>
-                    works
+                <div className={classes.cardGrid}>
+                    <Grid container spacing={3}>
+                        {Object.keys(works).map(id => (
+                            works[id].pictures && works[id].pictures.length > 0 ? (
+                            <Grid item key={id} xs={12} sm={6} md={4}>
+                                <Card className={classes.card}>
+                                    <CardActionArea className={classes.cardAction}>
+                                        {works[id].pictures && works[id].pictures.length > 0 ? (
+                                            <CardMedia
+                                                className={classes.cardMedia}
+                                                image={works[id].pictures[0].src}
+                                                title={works[id].pictures[0].title}
+                                            />
+                                        ) : null}
+                                        <CardContent className={classes.cardContent}>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {works[id].title}
+                                            </Typography>
+                                            {works[id].cmsId ? (
+                                                <Typography variant="body2" color="textSecondary" component="small">
+                                                    CMS: {works[id].cmsId}
+                                                </Typography>
+                                            ) : null}
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>
+                        ) : null))}
+                    </Grid>
                 </div>
             </div>
         : 
