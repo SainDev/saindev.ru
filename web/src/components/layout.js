@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
                     color: "white"
                 }}
             />
-            <Parallax image={require("../images/landing-bg.jpg")}>
+            <Parallax image={require("../images/landing-bg2.jpg")}>
                 <Container maxWidth="lg">
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
