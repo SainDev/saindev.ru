@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
                         <Grid item xs={12}>
                             <div style={{color: "#FFFFFF", textAlign: "right"}}>
                                 <h1 style={{fontSize: "2.2rem", fontWeight: "600", display: "inline-block", position: "relative"}}>
-                                    Hello, I'm <span class="highlight">SainDev</span>
+                                    Hello, I'm <span className="highlight">SainDev</span>
                                 </h1>
                                 <h3 style={{fontSize: "1.313rem", margin: "0 0"}}>
                                     I'm a full-stack web developer.<br />
