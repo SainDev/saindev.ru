@@ -6,7 +6,6 @@ import {
   Show,
   Create,
   Edit,
-  DisabledInput,
   SimpleShowLayout,
   SimpleForm,
   TextField,
@@ -46,7 +45,7 @@ export const CmsCreate = (props) => (
 export const CmsEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <DisabledInput source="id" />
+      <TextInput source="id" disabled />
       <TextInput source="name" />
     </SimpleForm>
   </Edit>

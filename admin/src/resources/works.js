@@ -7,7 +7,6 @@ import {
     Create,
     Edit,
     Filter,
-    DisabledInput,
     SimpleShowLayout,
     SimpleForm,
     DateField,
@@ -104,7 +103,7 @@ export const WorkCreate = props => (
 export const WorkEdit = props => (
     <Edit {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput source="id" disabled />
             <TextInput source="title" label="Название проекта" />
             <TextInput source="slug" />
             <TextInput source="site_url" label="Сайт" />
