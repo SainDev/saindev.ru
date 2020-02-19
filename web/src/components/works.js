@@ -37,6 +37,16 @@ const Works = () => {
     })
 
     useFirebase(firebase => {
+        let cmsCollection = [];
+        firebase
+        .firestore()
+        .collection("cms")
+        .onSnapshot(function(snapshot) {
+            snapshot.forEach((doc) => {
+                cmsCollection[doc.id] = doc.data();
+            });
+        });
+
         firebase
         .firestore()
         .collection("works")
@@ -45,7 +55,9 @@ const Works = () => {
         .onSnapshot({ includeMetadataChanges: true }, function(snapshot) {
             let data = [];
             snapshot.forEach((doc) => {
-                data.push(doc.data());
+                let tData = doc.data();
+                tData.cmsName = cmsCollection[doc.data().cmsId].name;
+                data.push(tData);
             });
             const cachedWorks = typeof window !== 'undefined' && localStorage.getItem('works');
             if (cachedWorks === null || cachedWorks !== JSON.stringify(data)) {
@@ -84,7 +96,7 @@ const Works = () => {
                                             </Typography>
                                             {works[id].cmsId ? (
                                                 <Typography variant="body2" color="textSecondary" component="small">
-                                                    CMS: {works[id].cmsId}
+                                                    CMS: {works[id].cmsName}
                                                 </Typography>
                                             ) : null}
                                         </CardContent>
