@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
 
     return (
         <>
-            <Header
+            {/* <Header
                 brand={data.site.siteMetadata.title}
                 //rightLinks={<HeaderLinks />}
                 fixed
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
                     height: 400,
                     color: "white"
                 }}
-            />
+            /> */}
             <Parallax image={require("../images/landing-bg2.jpg")}>
                 <Container maxWidth="lg">
                     <Grid container spacing={3}>
